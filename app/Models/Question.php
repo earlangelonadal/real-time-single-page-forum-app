@@ -9,6 +9,14 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','slug','body','category_id','user_id'];
+
+    // protected $guarderd = [];
+
+    // instead of ID search sa post man
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 
     public function user(){
        
@@ -21,5 +29,9 @@ class Question extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function getPathAttribute(){
+        return asset("api/question/$this->slug");
     }
 }
