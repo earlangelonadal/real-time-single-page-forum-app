@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use App\Models\Reply;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Question;
+
 
 class ReplyFactory extends Factory
 {
@@ -23,6 +26,14 @@ class ReplyFactory extends Factory
     {
         return [
             //
+            'body'=>$this->faker->text,
+            'question_id' => function(){
+                return Question::all()->random();
+            },
+            'user_id' => function(){
+                return User::all()->random();
+            },
+
         ];
     }
 }
