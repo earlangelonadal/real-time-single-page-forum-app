@@ -9,7 +9,7 @@ class Reply extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = [];
     public function question(){
         return $this->belongsTo(Question::class);
     }
@@ -22,3 +22,4 @@ class Reply extends Model
         return $this->hasMany(Like::class);
     }
 }
+ 
