@@ -9,6 +9,20 @@ use Illuminate\Http\Response;
 use App\Http\Resources\QuestionResource;
 class QuestionController extends Controller
 {
+
+/**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {   
+        //middleware sa mga function - pede ding 'only'
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

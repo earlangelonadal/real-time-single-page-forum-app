@@ -9,7 +9,14 @@ use Illuminate\Http\Response;
 use App\Http\Resources\ReplyResource;
 
 class ReplyController extends Controller
-{
+{   
+
+    public function __construct()
+    {   
+        //middleware sa mga function - pede ding 'only'
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

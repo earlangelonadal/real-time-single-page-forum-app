@@ -10,7 +10,14 @@ use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
-    /**
+
+    public function __construct()
+    {   
+        //middleware sa mga function - pede ding 'only'
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
+
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

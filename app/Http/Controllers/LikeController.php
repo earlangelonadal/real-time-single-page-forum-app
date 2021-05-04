@@ -8,6 +8,12 @@ use App\Models\Reply;
 
 class LikeController extends Controller
 {
+    public function __construct()
+    {   
+        //middleware sa mga function - pede ding 'only'
+        $this->middleware('JWT');
+    }
+
     public function likeIt(Reply $reply){
         $reply->like()->create([
             // 'user_id' => auth()->id()
